@@ -421,7 +421,15 @@ MXAuthAction;
 
                 // Report the certificate trusted by user (if any)
                 self->credentials.allowedCertificate = self->httpClient.allowedCertificate;
+                self->credentials.accessToken = loginResponse.accessToken;
+                
+                NSLog(@"SETTING THE ACCESS TOKEN WITHIN MXRESTCLIENT TO %@", loginResponse.accessToken);
+                
+                httpClient = [[MXHTTPClient alloc] initWithBaseURL:credentials.homeServer
+                                         accessToken:credentials.accessToken
+                   andOnUnrecognizedCertificateBlock:nil];
 
+             
                 // sanity check
                 if (success)
                 {
@@ -556,6 +564,14 @@ MXAuthAction;
 
                        // Report the certificate trusted by user (if any)
                        self->credentials.allowedCertificate = self->httpClient.allowedCertificate;
+                       self->credentials.accessToken = loginResponse.accessToken;
+                       
+                       NSLog(@"SETTING THE ACCESS TOKEN WITHIN MXRESTCLIENT TO %@", loginResponse.accessToken);
+
+                       httpClient = [[MXHTTPClient alloc] initWithBaseURL:credentials.homeServer
+                                                accessToken:credentials.accessToken
+                          andOnUnrecognizedCertificateBlock:nil];
+
 
                        // sanity check
                        if (success)
