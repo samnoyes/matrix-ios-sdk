@@ -861,6 +861,7 @@ NSString *const kMXRoomInitialSyncNotification = @"kMXRoomInitialSyncNotificatio
                                          @"msgtype": kMXMessageTypeImage,
                                          @"body": filename,
                                          @"url": fakeMediaURI,
+                                         @"Content-Type": @"application/json",
                                          @"info": [@{
                                                      @"mimetype": mimetype,
                                                      @"w": @(imageSize.width),
