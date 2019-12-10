@@ -362,6 +362,8 @@ static NSUInteger requestCount = 0;
     NSLog(@"[MXHTTPClient] #%@ - %@", @(requestNumber), path);
 
     mxHTTPOperation.numberOfTries++;
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+
     mxHTTPOperation.operation = [httpManager dataTaskWithRequest:request uploadProgress:^(NSProgress * _Nonnull theUploadProgress) {
         
         if (uploadProgress)
